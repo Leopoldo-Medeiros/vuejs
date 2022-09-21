@@ -1,9 +1,10 @@
 export default {
   template: `
         <!--  Creating a div with a class of flex gap-2. -->
+        <!-- $emit: Notifies the parents when the value changes  -->
         <div class="flex gap-2">
                 <button 
-                @click="$emit('change', tag) = tag"
+                @click="$emit('update:currentTag', tag) = tag"
                 v-for="tag in tags" 
                 class="border rounded px-1 py-px text-xs"
                 :class="{

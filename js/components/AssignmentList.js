@@ -20,9 +20,8 @@ export default {
 
             <!-- When this component anounces we change tags, we update our status too. -->
             <assignment-tags 
+              v-model:currentTag="currentTag"
               :initial-tags="assignments.map(a => a.tag)" 
-              :current-tag="currentTag"
-              @change="currentTag = $event"
             />
 
             <!-- Creating a border around the list of assignments. --> 
