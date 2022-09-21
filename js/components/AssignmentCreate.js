@@ -17,6 +17,7 @@ export default {
 
   methods: {
     add() {
+       /* Emitting an event called add, and passing the newAssignment as a parameter. */
         this.$emit('add', this.newAssignment);
 
         this.newAssignment = '';
