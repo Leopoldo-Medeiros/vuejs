@@ -1,68 +1,58 @@
 import Assignment from "./Assignment.js";
 import AssignmentTags from "./AssignmentTags.js";
+import Panel from "./Panel.js";
 
 export default {
-    components: {Assignment, AssignmentTags},
+    components: { Assignment, AssignmentTags, Panel },
 
     template: `
-      <!-- This is a section of the page that is displaying the assignments that are not complete. -->
-      <!-- Collection of assignment -->
-
-      <!-- This is the section of the page that is displaying the assignments that are complete. -->
-      <section v-show="assignments.length" class="w-60">
-      <div class="flex justify-between items-start">
-        <h2 class="font-bold mb-2">
-          {{ title }}
-          <span>({{ assignments.length }})</span>
-        </h2>
-
-        <button v-show="canToggle" @click="$emit('toggle')">&times;</button>
-      </div>
-
-      <!-- This part access all assignments -->
-      <!--  @change -> A way to pass data from a child component to a parent component. -->
-
-      <!-- When this component announces we change tags, we update our status too. -->
-      <assignment-tags
-          v-model:currentTag="currentTag"
-          :initial-tags="assignments.map(a => a.tag)"
-      />
-
-      <!-- Creating a border around the list of assignments. -->
-      <ul class="border border-gray-600 divide-y divide-gray-600 mt-6">
-        <assignment
-            v-for="assignment in filteredAssignments"
-            :key="assignment.id"
-            :assignment="assignment"
-        ></assignment>
-      </ul>
-
-      <slot></slot>
-
-      </section>
-
+      <!-- A component that is being used to display the assignments. -->
+      <Panel v-show="assignments.length" class="w-60">
+          <div class="flex justify-between items-start">
+            <h2 class="font-bold mb-2">
+              {{ title }}
+              <!-- It's displaying the number of assignments. -->
+              <span>({{ assignments.length }})</span>
+            </h2>
+    
+            <button v-show="canToggle" @click="$emit('toggle')">&times;</button>
+          </div>
+    
+          <assignment-tags
+              v-model:currentTag="currentTag"
+              :initial-tags="assignments.map(a => a.tag)"
+          ></assignment-tags>
+          <ul class="border border-gray-600 divide-y divide-gray-600 mt-6">
+            <assignment
+                v-for="assignment in filteredAssignments"
+                :key="assignment.id"
+                :assignment="assignment"
+            ></assignment>
+          </ul>
+    
+          <slot></slot>
+      </Panel>
     `,
 
     props: {
         assignments: Array,
         title: String,
-        canToggle: { type: Boolean, default: false  }
+        canToggle: { type: Boolean, default: false }
     },
 
     data() {
         return {
-            /* tracking the current tag. */
-            currentTag: "all",
-        }
+            currentTag: 'all',
+        };
     },
 
     computed: {
         filteredAssignments() {
-            if (this.currentTag === "all") {
+            if (this.currentTag === 'all') {
                 return this.assignments;
             }
 
-            return this.assignments.filter((a) => a.tag === this.currentTag);
-        },
-    },
-};
+            return this.assignments.filter(a => a.tag === this.currentTag);
+        }
+    }
+}

@@ -15,7 +15,7 @@ export default {
                   :assignments="filters.completed" 
                   title="Completed" 
                   can-toggle
-                  @toggle="showCompleted = !showCOmpleted"
+                  @toggle="showCompleted = !showCompleted"
               ></assignment-list>
             </div>
 
@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       assignments: [],
-      showCompleted: false
+      showCompleted: true
     };
   },
 
