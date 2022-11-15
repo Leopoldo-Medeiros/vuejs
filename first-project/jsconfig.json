@@ -1,0 +1,8 @@
+{
+//  Telling the compiler to look for any imports that start with `@` and look for them in the `src` folder.
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}

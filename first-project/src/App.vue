@@ -16,7 +16,6 @@ import HelloWorld from "@/components/HelloWorld.vue";
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
 
-      <!-- Creating a navigation bar with links to the different pages.-->
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
@@ -25,7 +24,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
     </div>
   </header>
 
-  <!-- It displays the view component for whatever component matches the current route -->
+<!-- This will display the corresponding view component for whatever component matches the current route-->
   <RouterView />
 </template>
 
